@@ -1,0 +1,50 @@
+#container {
+	width: 100%;	
+}
+
+#search-results-heading {
+	display: table;
+	width: 100%;
+	margin-top:10px;
+}
+
+#search-results-heading span {
+	display: table-cell;
+	width: 33%;
+	background-color: #675F5F;
+    color: white;
+    text-align: center;
+    padding:10px;
+}
+
+#search-results-content {
+	overflow:auto;
+	width: 100%;
+	max-height:600px;
+    border-top: none;
+    padding-top: 10px;
+}
+
+#tracks, #artists, #albums {
+	display: table-cell;
+	width: 33%;
+}
+
+ul.result-list {
+	list-style-type: none;
+	padding: 0;
+}
+
+ul.result-list li{
+	border: 3px solid #2A95C5;
+    margin-bottom: 5px;
+    background-color: #BDBDBD;
+    margin-right: 10px;
+    margin-left: 10px
+}
+
+span.result-elem-info {
+	display:inline-block;
+	width: 70%;
+}
+

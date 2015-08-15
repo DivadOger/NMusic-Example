@@ -1,0 +1,61 @@
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>NMusic Example</title>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.min.js"></script>
+		<script src="app.js"></script>
+		<script src="search/search.dataservice.js"></script>
+		<script src="search/search.controller.js"></script>
+		<script src="utils/infinitescroll.directive.js"></script>
+		<script src="utils/image.directive.js"></script>
+	</head>
+	<body ng-app="NMusicApp">
+		<div id="container" ng-controller="SearchCtrl" >
+			<div id="search-form">
+				<input type="text" ng-model="searchParam.text"/>
+				<button type="submit" ng-click="doSearch(true)">Pesquisar</button>
+				<input type="checkbox" ng-checked="searchParam.haveTracks" ng-click="searchParam.haveTracks = !searchParam.haveTracks">Músicas
+  				<input type="checkbox" ng-checked="searchParam.haveArtists" ng-click="searchParam.haveArtists = !searchParam.haveArtists">Artistas
+  				<input type="checkbox" ng-checked="searchParam.haveAlbums" ng-click="searchParam.haveAlbums = !searchParam.haveAlbums">Albúns
+			</div>
+			<div id="search-results" ng-cloak>
+				<div id="search-results-heading">
+					<span ng-show="searchParam.haveTracks">Músicas</span><span ng-show="searchParam.haveArtists">Artistas</span><span ng-show="searchParam.haveAlbums">Albúns</span>
+				</div>
+				<div ng-if="hasData()" id="search-results-content" infinite-scroll="loadMoreResults()">
+					<div id="tracks" ng-show="searchParam.haveTracks">
+						<ul class="result-list">
+							<li ng-repeat="track in searchData.tracks.results">
+								<div class="result-elem">
+									<span><img image-existence default-src="img/default.jpeg" ng-src="{{::getElementImg('tracks',track.id)}}"></span>
+									<span class="result-elem-info"><b>{{::track.title}}</b></br>{{::track.main_artist.name}}</span>
+								</div>						
+							</li>
+						</ul>
+					</div>
+					<div id="artists" ng-show="searchParam.haveArtists">
+						<ul class="result-list">
+							<li ng-repeat="artist in searchData.artists.results">
+								<div class="result-elem">
+									<span><img image-existence default-src="img/default.jpeg" ng-src="{{::getElementImg('artists',artist.id)}}"></span>
+									<span class="result-elem-info"><b>{{::artist.name}}</b></span>
+								</div>		
+							</li>
+						</ul>
+					</div>
+					<div id="albums" ng-show="searchParam.haveAlbums">
+						<ul class="result-list">
+							<li ng-repeat="album in searchData.albums.results">
+								<div class="result-elem">
+									<span><img image-existence default-src="img/default.jpeg" ng-src="{{::getElementImg('albums',album.id)}}"></span>
+									<span class="result-elem-info"><b>{{::album.title}}</b></span>
+								</div>		
+							</li>
+						</ul>
+					</div>
+				</div>	
+			</div>
+		</div>
+	</body>
+</html>
