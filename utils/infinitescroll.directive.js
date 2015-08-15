@@ -14,7 +14,7 @@
             	var elem = element[0];
 
                	element.bind('scroll',function () {
-               		if (elem.scrollTop + elem.offsetHeight > elem.scrollHeight - 2) {
+               		if (elem.scrollTop + elem.offsetHeight > elem.scrollHeight - 150) {
 						 scope.$apply(function () {
 						 	scope.callback();
 						 });

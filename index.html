@@ -14,17 +14,17 @@
 		<div id="container" ng-controller="SearchCtrl" >
 			<div id="search-form">
 				<input type="text" ng-model="searchParam.text"/>
-				<button type="submit" ng-click="doSearch(true)">Pesquisar</button>
-				<input type="checkbox" ng-checked="searchParam.haveTracks" ng-click="searchParam.haveTracks = !searchParam.haveTracks">Músicas
-  				<input type="checkbox" ng-checked="searchParam.haveArtists" ng-click="searchParam.haveArtists = !searchParam.haveArtists">Artistas
-  				<input type="checkbox" ng-checked="searchParam.haveAlbums" ng-click="searchParam.haveAlbums = !searchParam.haveAlbums">Albúns
+				<button type="submit" ng-click="doSearch(true)">Pesquisar</button></br>
+				Mostrar: <input type="checkbox" ng-checked="searchParam.showTracks" ng-click="searchParam.showTracks = !searchParam.showTracks">Músicas
+  				<input type="checkbox" ng-checked="searchParam.showArtists" ng-click="searchParam.showArtists = !searchParam.showArtists">Artistas
+  				<input type="checkbox" ng-checked="searchParam.showAlbums" ng-click="searchParam.showAlbums = !searchParam.showAlbums">Albúns
 			</div>
 			<div id="search-results" ng-cloak>
 				<div id="search-results-heading">
-					<span ng-show="searchParam.haveTracks">Músicas</span><span ng-show="searchParam.haveArtists">Artistas</span><span ng-show="searchParam.haveAlbums">Albúns</span>
+					<span ng-show="searchParam.showTracks">Músicas</span><span ng-show="searchParam.showArtists">Artistas</span><span ng-show="searchParam.showAlbums">Albúns</span>
 				</div>
 				<div ng-if="hasData()" id="search-results-content" infinite-scroll="loadMoreResults()">
-					<div id="tracks" ng-show="searchParam.haveTracks">
+					<div id="tracks" ng-show="searchParam.showTracks">
 						<ul class="result-list">
 							<li ng-repeat="track in searchData.tracks.results">
 								<div class="result-elem">
@@ -34,7 +34,7 @@
 							</li>
 						</ul>
 					</div>
-					<div id="artists" ng-show="searchParam.haveArtists">
+					<div id="artists" ng-show="searchParam.showArtists">
 						<ul class="result-list">
 							<li ng-repeat="artist in searchData.artists.results">
 								<div class="result-elem">
@@ -44,7 +44,7 @@
 							</li>
 						</ul>
 					</div>
-					<div id="albums" ng-show="searchParam.haveAlbums">
+					<div id="albums" ng-show="searchParam.showAlbums">
 						<ul class="result-list">
 							<li ng-repeat="album in searchData.albums.results">
 								<div class="result-elem">

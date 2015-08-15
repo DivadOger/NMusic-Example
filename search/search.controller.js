@@ -19,9 +19,9 @@
 		var currentOffset = 1;
 
 		$scope.searchParam = {
-			haveTracks : true,
-			haveArtists : true,
-			haveAlbums : true,
+			showTracks : true,
+			showArtists : true,
+			showAlbums : true,
 			text : ""
 		}
 
